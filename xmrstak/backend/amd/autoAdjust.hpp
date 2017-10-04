@@ -52,14 +52,16 @@ public:
 			return false;
 		}
 
-		devVec = getAMDDevices(0);
+		devVec = getAMDDevices(platformIndex);
 
 
 		int deviceCount = devVec.size();
 
 		if(deviceCount == 0)
+		{
+			printer::inst()->print_msg(L0,"WARNING: No AMD device found.");
             return false;
-
+		}
 
         generateThreadConfig(platformIndex);
 		return true;
